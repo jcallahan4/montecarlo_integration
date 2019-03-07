@@ -1,15 +1,21 @@
-# montecarlo_integration.py
-"""Volume 1: Monte Carlo Integration.
-<Name>
-<Class>
-<Date>
+"""
+Monte Carlo Integration
+Jake Callahan
+
+Many important integrals cannot be evaluated symbolically because the integrand
+has no antiderivative. Traditional numerical integration techniques like
+Newton-Cotes formulas and Gaussian quadrature usually work well for one-dimensional
+integrals, but rapidly become inefficient in higher dimensions. Monte Carlo
+integration is an integration strategy that has relatively slow convergence, but
+that does extremely well in high-dimensional settings compared to other techniques.
+In this program I implement Monte Carlo integration and apply it to a classic
+problem in statistics.
 """
 import numpy as np
 from scipy import stats
 import scipy.linalg as la
 from matplotlib import pyplot as plt
 
-# Problem 1
 def ball_volume(n, N=10000):
     """Estimate the volume of the n-dimensional unit ball.
 
@@ -26,8 +32,6 @@ def ball_volume(n, N=10000):
     estimate = 2**n*np.count_nonzero(lengths < 1) / N
     return estimate
 
-
-# Problem 2
 def mc_integrate1d(f, a, b, N=10000):
     """Approximate the integral of f on the interval [a,b].
 
@@ -56,8 +60,6 @@ def mc_integrate1d(f, a, b, N=10000):
 
     return V/N * sum
 
-
-# Problem 3
 def mc_integrate(f, mins, maxs, N=10000):
     """Approximate the integral of f over the box defined by mins and maxs.
 
@@ -97,9 +99,7 @@ def mc_integrate(f, mins, maxs, N=10000):
     #Return volume
     return V * np.sum(y) / N
 
-
-# Problem 4
-def prob4():
+def integrate_normal():
     """Let n=4 and Omega = [-3/2,3/4]x[0,1]x[0,1/2]x[0,1].
     - Define the joint distribution f of n standard normal random variables.
     - Use SciPy to integrate f over Omega.
